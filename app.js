@@ -2,15 +2,41 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app =express();
+app.set('view engine', 'ejs');
 
 app.get("/", function(req, res){
  var today = new Date();
- if (today.getDay() === 6 || todat.getDay()===0){
-    res.sendFile(__dirname + "/");
+ var currentDay = today.getDay();
+ var day = "";
+
+ switch (currentDay ){
+    case 0:
+        day= "Sunday";
+        break;
+    case 1:
+        day= "Monday";
+        break;
+    case 2:
+        day= "Tuesday";
+        break;
+    case 3:
+        day= "Wednesday";
+        break;
+    case 4:
+        day= "Thursday";
+        break;
+    case 5:
+        day= "Friday";
+        break;
+    case 6:
+        day= "Saturday";
+        break;
+    
+    default:
+        console.log("error just occur when fatching day information")
+
  }
- else{
-    res.send("<h1>Boo! i have to work</h1>");
- }
+ res.render('list', {kindOfDay: day });
 
     
 });
