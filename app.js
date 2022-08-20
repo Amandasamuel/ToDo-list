@@ -6,7 +6,7 @@ const app =express();
 app.get("/", function(req, res){
  var today = new Date();
  if (today.getDay() === 6 || todat.getDay()===0){
-    res.send("<h1>yay its the weekend!</h1>");
+    res.sendFile(__dirname + "/");
  }
  else{
     res.send("<h1>Boo! i have to work</h1>");
